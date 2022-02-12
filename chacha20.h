@@ -16,5 +16,7 @@ void chacha_block_init(uint32_t block[16], uint32_t key[8], uint32_t nonce[3],
 void chacha_init(struct chacha_ctx *ctx, uint32_t key[8], uint32_t nonce[2]);
 uint8_t chacha_next_byte(struct chacha_ctx *ctx);
 uint32_t chacha_next_uint32(struct chacha_ctx *ctx);
+void chacha_encrypt(uint8_t *data, size_t len, uint32_t key[8], uint32_t nonce[3]);
+void chacha_decrypt(uint8_t *data, size_t len, uint32_t key[8], uint32_t nonce[3]);
 
 #endif

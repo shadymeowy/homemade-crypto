@@ -28,6 +28,22 @@ uint32_t chacha_next_uint32(struct chacha_ctx *ctx)
 	       chacha_next_byte(ctx) << 16 | chacha_next_byte(ctx) << 24;
 }
 
+void chacha_encrypt(uint8_t *data, size_t len, uint32_t key[8], uint32_t nonce[3])
+{
+    struct chacha_ctx ctx;
+    size_t i;
+
+    chacha_init(&ctx, key, nonce);
+    for (i = 0; i < len; i++) {
+        data[i] ^= chacha_next_byte(&ctx);
+    }
+}
+
+void chacha_decrypt(uint8_t *data, size_t len, uint32_t key[8], uint32_t nonce[3])
+{
+    chacha_encrypt(data, len, key, nonce);
+}
+
 void chacha_block_init(uint32_t block[16], uint32_t key[8], uint32_t nonce[3],
 		       uint32_t counter)
 {
