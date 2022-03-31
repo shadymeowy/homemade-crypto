@@ -4,14 +4,14 @@
 void test(uint32_t *M, size_t len, uint32_t *out)
 {
 	/*for (int i = 0; i < 16; i++) {
-		printf("%08x", M[i]);
+		printf("%08lx", M[i]);
 	}
 	printf("\n");*/
 
 	blake2s(M, len, out);
 
 	for (int i = 0; i < 8; i++) {
-		printf("%08x ", out[i]);
+		printf("%08lx ", out[i]);
 	}
 	printf("\n");
 }
