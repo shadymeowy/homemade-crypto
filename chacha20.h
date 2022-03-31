@@ -1,6 +1,10 @@
 #ifndef CHACHA20_H
 #define CHACHA20_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 #include <stddef.h>
 
@@ -18,5 +22,9 @@ uint8_t chacha_next_byte(struct chacha_ctx *ctx);
 uint32_t chacha_next_uint32(struct chacha_ctx *ctx);
 void chacha_encrypt(uint8_t *data, size_t len, uint32_t key[8], uint32_t nonce[3]);
 void chacha_decrypt(uint8_t *data, size_t len, uint32_t key[8], uint32_t nonce[3]);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

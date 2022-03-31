@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 #include <stddef.h>
 
@@ -92,3 +96,7 @@ void blake2s(uint32_t *M, size_t len, uint32_t out[8])
 	compressed += remaining;
 	_blake2s_compress(out, M, compressed, remaining, 1);
 }
+
+#ifdef __cplusplus
+}
+#endif

@@ -1,5 +1,9 @@
 #include "chacha20.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void chacha_init(struct chacha_ctx *ctx, uint32_t key[8], uint32_t nonce[3])
 {
 	ctx->i = 0;
@@ -109,3 +113,7 @@ void chacha_block(uint32_t out[16], uint32_t const in[16])
 		out[i] = x[i] + in[i];
 	}
 }
+
+#ifdef __cplusplus
+}
+#endif
